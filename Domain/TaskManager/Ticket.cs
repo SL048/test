@@ -2,9 +2,13 @@
 
 namespace TaskManager
 {
-    public class Ticket
+   /// <summary>
+   /// Сущность заявки (тикета).
+   /// У каждого тикета имеются следующие поля: Название, описание, статус, приоритет, инициатор, исполнитель.
+   /// </summary>
+   public class Ticket
     {
-
+      #region Свойства
       /// <summary>
       /// Id заявки
       /// </summary>
@@ -39,6 +43,7 @@ namespace TaskManager
       /// Id Исполнителя заявки
       /// </summary>
       public Guid ExcecutorId { get; set; }
+      #endregion
 
       private Ticket(Guid id, string name, string description, TickectStatus status, TicketPriority priority,
                      Guid initiatorId, Guid excecutorId)
@@ -52,8 +57,13 @@ namespace TaskManager
          ExcecutorId = excecutorId;
       }
 
-      public static Ticket New(Guid id, string name, string description, TickectStatus status, TicketPriority priority,
-                               Guid initiatorId, Guid excecutorId)
-         => new Ticket(id, name, description, status, priority, initiatorId, excecutorId);
+      public static Ticket New(Guid id,
+                               string name,
+                               string description,
+                               TickectStatus status,
+                               TicketPriority priority,
+                               Guid initiatorId,
+                               Guid excecutorId)
+         => new(id, name, description, status, priority, initiatorId, excecutorId);
    }
 }
