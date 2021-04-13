@@ -64,6 +64,6 @@ namespace TaskManager
                                TicketPriority priority,
                                Guid initiatorId,
                                Guid excecutorId)
-         => new(id, name, description, status, priority, initiatorId, excecutorId);
+         => new Ticket(id, name, description, status, priority, initiatorId, excecutorId);
    }
 }
