@@ -9,11 +9,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManager", "Domain\TaskM
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{FF49BD6F-D03C-4629-B72E-F67C9F368745}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository.TaskManager", "Infrastructure\Repository.TaskManager\Repository.TaskManager.csproj", "{89E32EFE-347D-46EC-BD0D-F52D48FAF7D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository.TaskManager", "Infrastructure\Repository.TaskManager\Repository.TaskManager.csproj", "{89E32EFE-347D-46EC-BD0D-F52D48FAF7D8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{C14FCC69-2764-4A9C-B2AF-AFAEB3800943}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.Web", "Presentation\TaskManager.Web\TaskManager.Web.csproj", "{B21EA3FD-EACF-44D6-B9FD-152F04435714}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManager.Web", "Presentation\TaskManager.Web\TaskManager.Web.csproj", "{B21EA3FD-EACF-44D6-B9FD-152F04435714}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Security", "Security", "{566BC2A6-D962-46A7-B1AD-8EAC3CBAACAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer", "IdentityServer\IdentityServer.csproj", "{EF7BD948-F9B0-475F-A456-DBBB86D018A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +65,18 @@ Global
 		{B21EA3FD-EACF-44D6-B9FD-152F04435714}.Release|x64.Build.0 = Release|Any CPU
 		{B21EA3FD-EACF-44D6-B9FD-152F04435714}.Release|x86.ActiveCfg = Release|Any CPU
 		{B21EA3FD-EACF-44D6-B9FD-152F04435714}.Release|x86.Build.0 = Release|Any CPU
+		{EF7BD948-F9B0-475F-A456-DBBB86D018A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF7BD948-F9B0-475F-A456-DBBB86D018A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF7BD948-F9B0-475F-A456-DBBB86D018A1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EF7BD948-F9B0-475F-A456-DBBB86D018A1}.Debug|x64.Build.0 = Debug|Any CPU
+		{EF7BD948-F9B0-475F-A456-DBBB86D018A1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EF7BD948-F9B0-475F-A456-DBBB86D018A1}.Debug|x86.Build.0 = Debug|Any CPU
+		{EF7BD948-F9B0-475F-A456-DBBB86D018A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF7BD948-F9B0-475F-A456-DBBB86D018A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF7BD948-F9B0-475F-A456-DBBB86D018A1}.Release|x64.ActiveCfg = Release|Any CPU
+		{EF7BD948-F9B0-475F-A456-DBBB86D018A1}.Release|x64.Build.0 = Release|Any CPU
+		{EF7BD948-F9B0-475F-A456-DBBB86D018A1}.Release|x86.ActiveCfg = Release|Any CPU
+		{EF7BD948-F9B0-475F-A456-DBBB86D018A1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,6 +85,7 @@ Global
 		{858C6350-C830-4EAF-850F-FE9092DD53B6} = {0D4336B0-4C76-461D-BEAA-2B5DF02A6CB3}
 		{89E32EFE-347D-46EC-BD0D-F52D48FAF7D8} = {FF49BD6F-D03C-4629-B72E-F67C9F368745}
 		{B21EA3FD-EACF-44D6-B9FD-152F04435714} = {C14FCC69-2764-4A9C-B2AF-AFAEB3800943}
+		{EF7BD948-F9B0-475F-A456-DBBB86D018A1} = {566BC2A6-D962-46A7-B1AD-8EAC3CBAACAA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {13DCFC77-B431-41F2-86AC-92448F67CA00}
