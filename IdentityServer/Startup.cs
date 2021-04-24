@@ -1,6 +1,9 @@
+using IdentityServer.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
@@ -10,33 +13,56 @@ using System.Threading.Tasks;
 
 namespace IdentityServer
 {
-   public class Startup
-   {
-      public void ConfigureServices(IServiceCollection services)
-      {
-         services.AddIdentityServer()
-            .AddInMemoryApiResources(Configuration.GetApis())
-            .AddInMemoryClients(Configuration.GetClients())
-            .AddDeveloperSigningCredential();
+    public class Startup
+    {
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddDbContext<AppDbContext>(config =>
+            {
+                config.UseInMemoryDatabase("Memory");
+            });
 
-		 services.AddControllersWithViews();
-      }
+            services.AddIdentity<IdentityUser, IdentityRole>(config =>
+            {
+                config.Password.RequiredLength = 4;
+                config.Password.RequireDigit = false;
+                config.Password.RequireNonAlphanumeric = false;
+                config.Password.RequireUppercase = false;
+            })
+                .AddEntityFrameworkStores<AppDbContext>()
+                .AddDefaultTokenProviders();
 
-      public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-      {
-         if (env.IsDevelopment())
-         {
-            app.UseDeveloperExceptionPage();
-         }
+            services.ConfigureApplicationCookie(config =>
+            {
+                config.Cookie.Name = "Identity.Cookie";
+                config.LoginPath = "/Home/Login";
+            });
 
-         app.UseRouting();
+            services.AddIdentityServer()
+               .AddAspNetIdentity<IdentityUser>()
+               .AddInMemoryApiResources(Configuration.GetApis())
+               .AddInMemoryIdentityResources(Configuration.GetIdentityResources())
+               .AddInMemoryClients(Configuration.GetClients())
+               .AddDeveloperSigningCredential();
+            
+	         services.AddControllersWithViews();
+        }
 
-         app.UseIdentityServer();
-
-         app.UseEndpoints(endpoints =>
-         {
-            endpoints.MapDefaultControllerRoute();
-         });
-      }
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            if (env.IsDevelopment())
+            {
+               app.UseDeveloperExceptionPage();
+            }
+            
+            app.UseRouting();
+            
+            app.UseIdentityServer();
+            
+            app.UseEndpoints(endpoints =>
+            {
+               endpoints.MapDefaultControllerRoute();
+            });
+        }
    }
 }

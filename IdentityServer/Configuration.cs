@@ -1,4 +1,5 @@
 ﻿using IdentityModel;
+using IdentityServer4;
 using IdentityServer4.Models;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,22 @@ namespace IdentityServer
 {
     public static class Configuration
     {
+    public static IEnumerable<IdentityResource> GetIdentityResources()
+      => new List<IdentityResource>()
+      {
+         new IdentityResources.OpenId(),
+         new IdentityResources.Profile(),
+         /*new IdentityResource
+         {
+             Name = "rc.scope",
+             UserClaims =
+             {
+                 "rc.garndma"
+             }
+         }*/
+      };
+      
+        
       public static IEnumerable<ApiResource> GetApis()
        => new List<ApiResource> 
        { 
@@ -21,10 +38,31 @@ namespace IdentityServer
          {
             new Client
             {
-               ClientId = "client_id",
-               ClientSecrets = {new Secret("client_secret".ToSha256()) },
-               AllowedGrantTypes = GrantTypes.ClientCredentials,
-               AllowedScopes = { "ApiOne" }
+                ClientId = "client_id",
+                ClientSecrets = {new Secret("client_secret".ToSha256()) },
+                AllowedGrantTypes = GrantTypes.ClientCredentials,
+                RedirectUris = { "https://localhost:44343/signin-oidc" },
+                AllowedScopes = { 
+                    "ApiOne",
+                    IdentityServerConstants.StandardScopes.OpenId,
+                    IdentityServerConstants.StandardScopes.Profile,
+                },
+                RequireConsent = false,
+            },
+
+            new Client
+			{
+                ClientId = "client_id_js",
+                AllowedGrantTypes = GrantTypes.Implicit,
+                RedirectUris =  { "https://localhost:5001/Home/signin" },
+                RequireClientSecret = false,
+                AllowedScopes =
+				{
+                    IdentityServerConstants.StandardScopes.OpenId
+				},
+                AllowAccessTokensViaBrowser = true,
+                RequireConsent = false,
+
             }
          };
     }
