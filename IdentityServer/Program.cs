@@ -25,11 +25,6 @@ namespace IdentityServer
 
                 var user = new IdentityUser("Bob");
                 userManager.CreateAsync(user, "password").GetAwaiter().GetResult();
-                /*userManager.AddClaimAsync(user, new Claim("rc.garndma", "big.cookie"))
-                    .GetAwaiter().GetResult();
-                userManager.AddClaimAsync(user,
-                    new Claim("rc.api.garndma", "big.api.cookie"))
-                    .GetAwaiter().GetResult();*/
             }
 
                 host.Run();

@@ -8,7 +8,7 @@ var createNonce = function () {
 
 var signIn = function () {
 
-  var redirectUri = "https://localhost:5001/Home/SignIn";
+  var redirectUri = "https://localhost:44312//Home/SignIn";
   var responseType = "id_token token";
   var scope = "openid";
   var authUrl = 

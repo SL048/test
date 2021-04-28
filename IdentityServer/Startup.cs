@@ -35,12 +35,13 @@ namespace IdentityServer
             services.ConfigureApplicationCookie(config =>
             {
                 config.Cookie.Name = "Identity.Cookie";
-                config.LoginPath = "/Home/Login";
+                config.LoginPath = "/Auth/Login";
             });
 
             services.AddIdentityServer()
                .AddAspNetIdentity<IdentityUser>()
-               .AddInMemoryApiResources(Configuration.GetApis())
+               .AddInMemoryApiScopes(Configuration.GetApiScopes())
+               .AddInMemoryApiResources(Configuration.GetApiResources())
                .AddInMemoryIdentityResources(Configuration.GetIdentityResources())
                .AddInMemoryClients(Configuration.GetClients())
                .AddDeveloperSigningCredential();
@@ -50,15 +51,16 @@ namespace IdentityServer
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            
             if (env.IsDevelopment())
             {
                app.UseDeveloperExceptionPage();
             }
-            
+
             app.UseRouting();
             
             app.UseIdentityServer();
-            
+
             app.UseEndpoints(endpoints =>
             {
                endpoints.MapDefaultControllerRoute();
