@@ -70,7 +70,11 @@ namespace IdentityServer
                         IdentityServerConstants.StandardScopes.OpenId,
                         "read",
                         "write",
+                        "rc.scope",
                   },
+
+                  AccessTokenLifetime = 1,
+
                   AllowAccessTokensViaBrowser = true,
 
                   RequireConsent = false,

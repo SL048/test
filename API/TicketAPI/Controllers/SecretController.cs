@@ -15,6 +15,7 @@ namespace TicketAPI.Controllers
         [Authorize]
         public string Index()
 		{
+            var claims = User.Claims.ToList();
             return "olala gellow nigger :3";
 		}
     }
